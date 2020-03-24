@@ -5,10 +5,14 @@ class MermaidIndex extends Component{
   render(){
     return(
       <React.Fragment>
-      <ListGroup>
-        <ListGroupItemHeading>Mermaid One</ListGroupItemHeading>
-        <ListGroupItemText>Mermaid Age - Mermaid Enjoys</ListGroupItemText>
-       </ListGroup>
+      { this.props.mermaids.map((mermaid, index) => {
+  return(
+    <ListGroup key={ index }>
+      <h4>{ mermaid.name }</h4>
+      <small>{ mermaid.age } - { mermaid.enjoys }</small>
+    </ListGroup>
+    )
+  })}
        </React.Fragment>
     )
   }
