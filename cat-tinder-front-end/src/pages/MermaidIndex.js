@@ -1,9 +1,15 @@
 import React, { Component } from 'react';
+import { ListGroup, ListGroupItem, ListGroupItemHeading, ListGroupItemText } from 'reactstrap';
 
 class MermaidIndex extends Component{
   render(){
     return(
-      <h1>MermaidIndex</h1>
+      <React.Fragment>
+      <ListGroup>
+        <ListGroupItemHeading>Mermaid One</ListGroupItemHeading>
+        <ListGroupItemText>Mermaid Age - Mermaid Enjoys</ListGroupItemText>
+       </ListGroup>
+       </React.Fragment>
     )
   }
 }
