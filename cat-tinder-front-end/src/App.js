@@ -14,6 +14,10 @@ class App extends Component{
       allMermaids: mermaids
     }
   }
+  handleNewMermaid = (form) =>{
+    console.log("New Mermaid")
+    console.log(form)
+  }
   render(){
     return(
       <React.Fragment>
@@ -21,7 +25,7 @@ class App extends Component{
 
         <Router>
           <Switch>
-            <Route exact path="/newmermaid" component= {NewMermaid} /> 
+            <Route exact path="/newmermaid" render={ (props) => <NewMermaid handleNewMermaid={ this.handleNewMermaid } /> } />
             <Route exact path="/mermaid/:id" render={ (props) => <MermaidShow {...props} mermaids={ this.state.allMermaids } /> } />
             <Route exact path="/" render={ (props) => <MermaidIndex mermaids={ this.state.allMermaids } /> } />
           </Switch>

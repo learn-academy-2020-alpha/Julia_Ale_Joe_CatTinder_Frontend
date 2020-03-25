@@ -18,6 +18,10 @@ class NewMermaid extends Component{
         form[event.target.name] = event.target.value
         this.setState({ form: form })
       }
+      handleSubmit = () =>{
+        let { form } = this.state
+        this.props.handleNewMermaid(form)
+      }
   render(){
     return(
       <>
@@ -43,11 +47,11 @@ class NewMermaid extends Component{
                             name="enjoys"
                             onChange={ this.handleChange }
                             value={ this.state.form.enjoys }
-                        />    
+                        />
             </FormGroup>
-            <Button id="submit">Add New Mermaid</Button>
+            <Button id="submit" onClick={ this.handleSubmit }>Add New Mermaid</Button>
+            <Button id="home" href= "/" >Home</Button>
         </Form>
-        <a href= "/" >Home</a>
       </>
     )}
 }
