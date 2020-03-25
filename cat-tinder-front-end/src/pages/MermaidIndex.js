@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import { ListGroup, ListGroupItem, ListGroupItemHeading, ListGroupItemText } from 'reactstrap';
+import { Link } from "react-router-dom"
+
 
 class MermaidIndex extends Component{
   render(){
@@ -15,6 +17,7 @@ class MermaidIndex extends Component{
           </ListGroup>
           )
         })}
+        <a href= "/newmermaid" >Create New Mermaid</a>
       </React.Fragment>
     )
   }
