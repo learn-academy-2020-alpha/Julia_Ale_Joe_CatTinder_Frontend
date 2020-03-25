@@ -9,11 +9,11 @@ Enzyme.configure({ adapter: new Adapter() })
 
 it('MermaidIndex renders without crashing', () => {
   const div = document.createElement('div')
-  ReactDOM.render(<MermaidIndex />, div)
+  ReactDOM.render(<MermaidIndex mermaids={ mermaids }/>, div)
 })
 
 it('Renders the mermaids', ()=>{
-  const component = mount(<CatIndex mermaids={ mermaids }/>)
-  const headings = component.find('h4')
+  const component = mount(<MermaidIndex mermaids={ mermaids }/>)
+  const headings = component.find('ListGroupItemHeading')
   expect(headings.length).toBe(3)
 })

@@ -6,14 +6,16 @@ class MermaidIndex extends Component{
     return(
       <React.Fragment>
       { this.props.mermaids.map((mermaid, index) => {
-  return(
-    <ListGroup key={ index }>
-      <h4>{ mermaid.name }</h4>
-      <small>{ mermaid.age } - { mermaid.enjoys }</small>
-    </ListGroup>
-    )
-  })}
-       </React.Fragment>
+        return(
+          <ListGroup key={ index }>
+            <ListGroupItem>
+            <ListGroupItemHeading><a href={`./mermaid/${mermaid.id}`}>{ mermaid.name }</a></ListGroupItemHeading>
+            <ListGroupItemText>Age: { mermaid.age } - Enjoys: { mermaid.enjoys }</ListGroupItemText>
+            </ListGroupItem>
+          </ListGroup>
+          )
+        })}
+      </React.Fragment>
     )
   }
 }

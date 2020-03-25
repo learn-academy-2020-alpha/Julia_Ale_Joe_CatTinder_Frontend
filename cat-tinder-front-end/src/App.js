@@ -17,9 +17,10 @@ class App extends Component{
     return(
       <React.Fragment>
         <Header />
+
         <Router>
           <Switch>
-            <Route exact path="/mermaid/:id" component={ MermaidShow } />
+            <Route exact path="/mermaid/:id" render={ (props) => <MermaidShow {...props} mermaids={ this.state.allMermaids } /> } />
             <Route exact path="/" render={ (props) => <MermaidIndex mermaids={ this.state.allMermaids } /> } />
           </Switch>
         </Router>
