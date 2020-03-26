@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { ListGroup, ListGroupItem, ListGroupItemHeading, ListGroupItemText } from 'reactstrap';
-import { Link } from "react-router-dom"
+
 
 
 class MermaidIndex extends Component{
