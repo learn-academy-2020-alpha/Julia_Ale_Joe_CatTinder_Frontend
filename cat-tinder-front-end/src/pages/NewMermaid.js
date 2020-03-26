@@ -1,11 +1,13 @@
 import React, { Component } from 'react';
 import { Form, FormGroup, Label, Input, Button } from 'reactstrap';
+import { Link, Redirect} from "react-router-dom"
 
 
 class NewMermaid extends Component{
     constructor(props){
         super(props)
         this.state = {
+          success: false,
           form:{
             name: '',
             age: '',
@@ -18,10 +20,16 @@ class NewMermaid extends Component{
         form[event.target.name] = event.target.value
         this.setState({ form: form })
       }
-      handleSubmit = () =>{
-        let { form } = this.state
-        this.props.handleNewMermaid(form)
-      }
+
+      handleSubmit = (event) => {
+    // keeps React from refreshing the page unnecessarily
+    event.preventDefault()
+    // a function call being passed from App.js
+    this.props.handleSubmit(this.state.form)
+    this.setState({
+      success: true
+    })
+  }
   render(){
     return(
       <>
@@ -51,6 +59,16 @@ class NewMermaid extends Component{
             </FormGroup>
             <Button id="submit" onClick={ this.handleSubmit }>Add New Mermaid</Button>
             <Button id="home" href= "/" >Home</Button>
+            <Link to="/">
+              <Button
+              name="submit"
+              id="submit"
+              onClick={ this.handleSubmit }
+            >
+              Create a New Profile
+            </Button>
+            { this.state.success && <Redirect to="./"/> }
+          </Link>
         </Form>
       </>
     )}

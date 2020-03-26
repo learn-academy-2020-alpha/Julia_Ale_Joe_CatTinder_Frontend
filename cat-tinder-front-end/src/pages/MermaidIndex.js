@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { ListGroup, ListGroupItem, ListGroupItemHeading, ListGroupItemText, Button } from 'reactstrap';
 
 
-
 class MermaidIndex extends Component{
   render(){
     return(
@@ -11,7 +10,7 @@ class MermaidIndex extends Component{
         return(
           <ListGroup key={ index }>
             <ListGroupItem>
-            <ListGroupItemHeading><a href={`./mermaid/${mermaid.id}`}>{ mermaid.name }</a></ListGroupItemHeading>
+            <ListGroupItemHeading><a href={`./mermaids/${mermaid.id}`}>{ mermaid.name }</a></ListGroupItemHeading>
             <ListGroupItemText>Age: { mermaid.age } - Enjoys: { mermaid.enjoys }</ListGroupItemText>
             </ListGroupItem>
           </ListGroup>
