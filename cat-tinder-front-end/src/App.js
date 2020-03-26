@@ -12,12 +12,12 @@ class App extends Component{
     this.state = {
       mermaids: [],
         }
-    this.getMermaids() 
+    this.getMermaids()
       }
 
-    componentWillMount(){
-    	this.getMermaids()
-    } 
+    componentDidMount(){
+      this.getMermaids()
+    }
 
   getMermaids = () => {
     // Making a fetch request to the url of our Rails app
@@ -28,7 +28,7 @@ class App extends Component{
      if(response.status === 200){
        // We need to convert the response to JSON
        // This also returns a promise
-       return(response.json())  
+       return(response.json())
      }
    })
    .then((mermaidsArray)=>{
@@ -36,6 +36,24 @@ class App extends Component{
      this.setState({ mermaids: mermaidsArray })
    })
  }
+ createMermaid = (newmermaid) => {
+    return fetch("http://localhost:3000/mermaids", {
+      // converting an object to a string
+    	body: JSON.stringify(newmermaid),
+      // specify the info being sent in JSON and the info returning should be JSON
+    	headers: {
+    		"Content-Type": "application/json"
+    	},
+      // HTTP verb so the correct endpoint is invoked on the server
+    	method: "POST"
+    })
+    .then((response) => {
+      // if the response is good call the getCats method
+      if(response.ok){
+        return this.getMermaids()
+      }
+    })
+  }
 
 
   render(){
@@ -45,9 +63,11 @@ class App extends Component{
 
         <Router>
           <Switch>
-            <Route exact path="/newmermaid" component= {NewMermaid} /> 
-            <Route exact path="/mermaid/:id" render={ (props) => <MermaidShow {...props} mermaids={ this.state.mermaids } /> } />
+          <Route exact path="/newmermaid" render={ (props) => <NewMermaid handleSubmit={ this.createMermaid } /> }
+        />
+            <Route exact path="/mermaids/:id" render={ (props) => <MermaidShow {...props} mermaids={ this.state.mermaids } /> } />
             <Route exact path="/" render={ (props) => <MermaidIndex mermaids={ this.state.mermaids } /> } />
+
           </Switch>
         </Router>
       </React.Fragment>

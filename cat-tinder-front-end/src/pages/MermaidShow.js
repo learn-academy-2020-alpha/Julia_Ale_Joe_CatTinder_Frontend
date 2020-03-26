@@ -1,8 +1,5 @@
 import React, { Component } from 'react';
-import {
-  Card, CardImg, CardText, CardBody, CardLink,
-  CardTitle, CardSubtitle
-} from 'reactstrap';
+import { Card, Button, CardTitle, CardText } from 'reactstrap';
 
 class MermaidShow extends Component{
   render(){
@@ -11,17 +8,12 @@ class MermaidShow extends Component{
     return(
       <>
       <div>
-        <Card>
-          <CardBody>
-            <CardTitle>{ mermaid.name }</CardTitle>
-            <CardSubtitle>Age: { mermaid.age }</CardSubtitle>
-          </CardBody>
-        {/*  <img width="100%" src="/assets/318x180.svg" alt="Card image cap" /> */}
-          <CardBody>
-            <CardText>Enjoys: { mermaid.enjoys }</CardText>
-            <CardLink href="/">Home</CardLink>
-          </CardBody>
+        <Card body inverse color="info">
+          <CardTitle>{ mermaid.name }</CardTitle>
+          <CardText>Age: { mermaid.age }</CardText>
+          <CardText>Enjoys: { mermaid.enjoys }</CardText>
         </Card>
+        <Button color="secondary" href="/">Home</Button>
       </div>
       </>
     )
