@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Form, FormGroup, Label, Input, Button } from 'reactstrap';
-import { Link, Redirect} from "react-router-dom"
+import { Redirect} from "react-router-dom"
 
 
 class NewMermaid extends Component{
@@ -57,18 +57,11 @@ class NewMermaid extends Component{
                             value={ this.state.form.enjoys }
                         />
             </FormGroup>
-            <Button id="submit" onClick={ this.handleSubmit }>Add New Mermaid</Button>
-            <Button id="home" href= "/" >Home</Button>
-            <Link to="/">
-              <Button
-              name="submit"
-              id="submit"
-              onClick={ this.handleSubmit }
-            >
+              <Button name="submit" id="submit" onClick={ this.handleSubmit }>
               Create a New Profile
-            </Button>
-            { this.state.success && <Redirect to="./"/> }
-          </Link>
+              </Button>
+              { this.state.success && <Redirect to="./"/> }
+              <Button id="home" href= "/" >Home</Button>
         </Form>
       </>
     )}
