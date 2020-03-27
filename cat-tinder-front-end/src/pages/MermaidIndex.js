@@ -5,7 +5,7 @@ import { ListGroup, ListGroupItem, ListGroupItemHeading, ListGroupItemText, Butt
 class MermaidIndex extends Component{
   render(){
     return(
-      <React.Fragment>
+      <>
       { this.props.mermaids.map((mermaid, index) => {
         return(
           <ListGroup key={ index }>
@@ -17,7 +17,7 @@ class MermaidIndex extends Component{
           )
         })}
         <Button href= "/newmermaid" >Create New Mermaid</Button>
-      </React.Fragment>
+      </>
     )
   }
 }

@@ -15,6 +15,7 @@ class NewMermaid extends Component{
           }
         }
       }
+
       handleChange = (event) => {
         let { form } = this.state
         form[event.target.name] = event.target.value
@@ -22,14 +23,11 @@ class NewMermaid extends Component{
       }
 
       handleSubmit = (event) => {
-    // keeps React from refreshing the page unnecessarily
-    event.preventDefault()
-    // a function call being passed from App.js
-    this.props.handleSubmit(this.state.form)
-    this.setState({
-      success: true
-    })
-  }
+        event.preventDefault()
+        this.props.handleSubmit(this.state.form)
+        this.setState({ success: true })
+      }
+
   render(){
     return(
       <>
@@ -60,7 +58,7 @@ class NewMermaid extends Component{
               <Button name="submit" id="submit" onClick={ this.handleSubmit }>
               Create a New Profile
               </Button>
-              { this.state.success && <Redirect to="./"/> }
+              { this.state.success && <Redirect to="/"/> }
               <Button id="home" href= "/" >Home</Button>
         </Form>
       </>
