@@ -20,36 +20,26 @@ class App extends Component{
     }
 
   getMermaids = () => {
-    // Making a fetch request to the url of our Rails app
-    // fetch returns a promise
    fetch("http://localhost:3000/mermaids")
    .then((response)=>{
-     //Make sure we get a successful response back
      if(response.status === 200){
-       // We need to convert the response to JSON
-       // This also returns a promise
        return(response.json())
      }
    })
    .then((mermaidsArray)=>{
-      //Finally, we can assign the mermaids to state, and they will render
      this.setState({ mermaids: mermaidsArray })
    })
  }
 
   createMermaid = (newmermaid) => {
     return fetch("http://localhost:3000/mermaids", {
-      // converting an object to a string
     	body: JSON.stringify(newmermaid),
-      // specify the info being sent in JSON and the info returning should be JSON
     	headers: {
     		"Content-Type": "application/json"
     	},
-      // HTTP verb so the correct endpoint is invoked on the server
     	method: "POST"
     })
     .then((response) => {
-      // if the response is good call the getMermaids method
       if(response.ok){
         return this.getMermaids()
       }
@@ -67,10 +57,9 @@ class App extends Component{
             <Route exact path="/newmermaid"
             render={ (props) => <NewMermaid handleSubmit={ this.createMermaid } /> }/>
             <Route exact path="/mermaids/:id"
-            render={ (props) => <MermaidShow {...props} /> } />
+            render={ (props) => <MermaidShow {...props} getMermaids={this.getMermaids} /> } />
             <Route exact path="/"
             render={ (props) => <MermaidIndex mermaids={ this.state.mermaids } /> } />
-
           </Switch>
         </Router>
       </React.Fragment>
