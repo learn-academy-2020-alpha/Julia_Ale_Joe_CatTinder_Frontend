@@ -10,7 +10,7 @@ class App extends Component{
   constructor(){
     super()
     this.state = {
-      mermaids: [],
+      mermaids: []
         }
     this.getMermaids()
       }
@@ -36,7 +36,8 @@ class App extends Component{
      this.setState({ mermaids: mermaidsArray })
    })
  }
- createMermaid = (newmermaid) => {
+
+  createMermaid = (newmermaid) => {
     return fetch("http://localhost:3000/mermaids", {
       // converting an object to a string
     	body: JSON.stringify(newmermaid),
@@ -48,7 +49,7 @@ class App extends Component{
     	method: "POST"
     })
     .then((response) => {
-      // if the response is good call the getCats method
+      // if the response is good call the getMermaids method
       if(response.ok){
         return this.getMermaids()
       }
@@ -63,10 +64,12 @@ class App extends Component{
 
         <Router>
           <Switch>
-          <Route exact path="/newmermaid" render={ (props) => <NewMermaid handleSubmit={ this.createMermaid } /> }
-        />
-            <Route exact path="/mermaids/:id" render={ (props) => <MermaidShow {...props} mermaids={ this.state.mermaids } /> } />
-            <Route exact path="/" render={ (props) => <MermaidIndex mermaids={ this.state.mermaids } /> } />
+            <Route exact path="/newmermaid"
+            render={ (props) => <NewMermaid handleSubmit={ this.createMermaid } /> }/>
+            <Route exact path="/mermaids/:id"
+            render={ (props) => <MermaidShow {...props} /> } />
+            <Route exact path="/"
+            render={ (props) => <MermaidIndex mermaids={ this.state.mermaids } /> } />
 
           </Switch>
         </Router>
